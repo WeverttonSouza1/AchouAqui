@@ -1,0 +1,69 @@
+@startuml
+left to right direction
+
+actor "Usuário" as Usuario
+actor "Usuário autenticado" as UsuarioAuth
+actor "Administrador" as Admin
+
+Usuario <|-- UsuarioAuth
+
+rectangle "AchouAqui" {
+
+    usecase "Cadastrar-se" as UC01
+    usecase "Fazer login" as UC02
+    usecase "Recuperar senha" as UC03
+
+    usecase "Pesquisar objetos" as UC04
+    usecase "Filtrar achados e perdidos" as UC05
+    usecase "Visualizar detalhes do objeto" as UC06
+
+    usecase "Registrar objeto perdido" as UC07
+    usecase "Registrar objeto encontrado" as UC08
+    usecase "Adicionar foto ao registro" as UC09
+    usecase "Tirar foto do objeto" as UC10
+    usecase "Informar localização" as UC11
+
+    usecase "Editar publicação" as UC12
+    usecase "Excluir publicação" as UC13
+    usecase "Marcar objeto como recuperado" as UC14
+
+    usecase "Conversar sobre um objeto" as UC15
+    usecase "Receber notificações" as UC16
+
+    usecase "Visualizar perfil" as UC17
+    usecase "Editar perfil" as UC18
+
+    usecase "Gerenciar usuários" as UC19
+    usecase "Gerenciar publicações" as UC20
+}
+
+Usuario --> UC01
+Usuario --> UC02
+Usuario --> UC03
+Usuario --> UC04
+Usuario --> UC05
+Usuario --> UC06
+
+UsuarioAuth --> UC07
+UsuarioAuth --> UC08
+UsuarioAuth --> UC09
+UsuarioAuth --> UC10
+UsuarioAuth --> UC11
+UsuarioAuth --> UC12
+UsuarioAuth --> UC13
+UsuarioAuth --> UC14
+UsuarioAuth --> UC15
+UsuarioAuth --> UC16
+UsuarioAuth --> UC17
+UsuarioAuth --> UC18
+
+Admin --> UC19
+Admin --> UC20
+
+UC07 .> UC09 : <<include>>
+UC08 .> UC09 : <<include>>
+
+UC07 .> UC11 : <<include>>
+UC08 .> UC11 : <<include>>
+
+@enduml
