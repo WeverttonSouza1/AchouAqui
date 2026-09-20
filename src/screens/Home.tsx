@@ -15,45 +15,45 @@ export default function HomeScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
       <ScrollView style = {styles.root} contentContainerStyle = {styles.content} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
-      <View style = {styles.elliot}>
-        <Text style = {styles.greeting}>Hello, Friend!</Text>
-      </View>
+        <View style = {styles.elliot}>
+          <Text style = {styles.greeting}>Hello, Friend!</Text>
+        </View>
 
-      <View style = {styles.container}>
-        <Text style = {styles.title}>AchouAqui</Text>
-        <Text style = {styles.subtitle}>Aplicativo de Achados e Perdidos</Text>
-      </View>
-      
-      <View style = {styles.container}>
-        <TextInput style = {styles.input} placeholder = "O que você encontrou/perdeu?" value = {item} onChangeText = {setItem} />
-        <Text style = {styles.subtitle}>Digitando: {item}</Text>
+        <View style = {styles.container}>
+          <Text style = {styles.title}>AchouAqui</Text>
+          <Text style = {styles.subtitle}>Aplicativo de Achados e Perdidos</Text>
+        </View>
+        
+        <View style = {styles.container}>
+          <TextInput style = {styles.input} placeholder = "O que você encontrou/perdeu?" value = {item} onChangeText = {setItem} />
+          <Text style = {styles.subtitle}>Digitando: {item}</Text>
 
-        <TouchableOpacity style = {styles.button} onPress = {saveItem}>
-          <Text style = {styles.buttonText}>Salvar Objeto</Text>
+          <TouchableOpacity style = {styles.button} onPress = {saveItem}>
+            <Text style = {styles.buttonText}>Salvar Objeto</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style = {styles.listContainer}>
+          <Text style = {styles.subtitle}>Itens salvos:</Text>
+          {list.map((object, index) => (
+            <View key = {index} style = {styles.listItem}>
+              <Text>{object}</Text>
+            </View>
+          ))}
+        </View>
+
+        <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('Login')}>
+          <Text style = {styles.buttonText}>Login</Text>
         </TouchableOpacity>
-      </View>
-
-      <View style = {styles.listContainer}>
-        <Text style = {styles.subtitle}>Itens salvos:</Text>
-        {list.map((object, index) => (
-          <View key = {index} style = {styles.listItem}>
-            <Text>{object}</Text>
-          </View>
-        ))}
-      </View>
-
-      <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('Login')}>
-        <Text style = {styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('Profile')}>
-        <Text style = {styles.buttonText}>Perfil</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('ItemDetails')}>
-        <Text style = {styles.buttonText}>Detalhes do Item</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('CreatePost')}>
-        <Text style = {styles.buttonText}>Criar Post</Text>
-      </TouchableOpacity>
+        <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('Profile')}>
+          <Text style = {styles.buttonText}>Perfil</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('ItemDetails')}>
+          <Text style = {styles.buttonText}>Detalhes do Item</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('CreatePost')}>
+          <Text style = {styles.buttonText}>Criar Post</Text>
+        </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     paddingBottom: 24,
   },
 

@@ -37,6 +37,9 @@
         <View style = {styles.divider} />
 
         <View style = {styles.options}>
+          <ProfileRow icon = "user" label = "Editar perfil" />
+          <ProfileRow icon = "cog" label = "Configurações" />
+          <ProfileRow icon = "paint-brush" label = "Tema" />
           <ProfileRow icon = "bell-o" label = "Notificações" />
           <ProfileRow icon = "commenting-o" label = "Idioma" value = "Português" />
           <ProfileRow icon = "lock" label = "Política de privacidade" />

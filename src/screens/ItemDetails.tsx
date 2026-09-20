@@ -1,74 +1,136 @@
-import { useState } from 'react';
-import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
+import { Share, StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function ItemDetailsScreen({ navigation }: any) {
-  const [item, setItem] = useState('');
-  const [list, setList] = useState<string[]>([]);
-
-  const saveItem = () => {
-    if (item.trim() !== '') {
-      setList([...list, item]);
-      setItem('');
-    }
+  const sharePost = () => {
+    Share.share({ message: 'Confira este anúncio: Nome da publicação' });
   };
 
   return (
-    <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
+    <>
+      <StatusBar hidden />
       <ScrollView contentContainerStyle = {styles.root} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
-      <View style = {styles.elliot}>
-        <Text style = {styles.greeting}>Hello, Friend!</Text>
-      </View>
+        <View style = {styles.imageContainer}>
+          <FontAwesome name = "image" size = {330} color = '#4c288f' />
+          <TouchableOpacity style = {[styles.imageAction, styles.backImageAction]} onPress = {() => navigation.goBack()}>
+            <FontAwesome name = "arrow-left" size = {24} color = "#ffffff" />
+          </TouchableOpacity>
+          <TouchableOpacity style = {[styles.imageAction, styles.shareImageAction]} onPress = {sharePost}>
+            <FontAwesome name = "share" size = {22} color = "#ffffff" />
+          </TouchableOpacity>
+        </View>
 
-      <View style = {styles.container}>
-        <Text style = {styles.title}>AchouAqui</Text>
-        <Text style = {styles.subtitle}>Aplicativo de Achados e Perdidos</Text>
-      </View>
-      
-      <View style = {styles.container}>
-        <TextInput style = {styles.input} placeholder = "O que você encontrou/perdeu?" value = {item} onChangeText = {setItem} />
-        <Text style = {styles.subtitle}>Digitando: {item}</Text>
-
-        <TouchableOpacity style = {styles.button} onPress = {saveItem}>
-          <Text style = {styles.buttonText}>Salvar Objeto</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style = {styles.listContainer}>
-        <Text style = {styles.subtitle}>Itens salvos:</Text>
-        {list.map((object, index) => (
-          <View key = {index} style = {styles.listItem}>
-            <Text>{object}</Text>
+        <View style = {[styles.container, styles.titleContainer]}>
+            <Text style = {styles.title}>Nome da publicação</Text>
+        </View>
+        
+        <View style = {styles.infoRow}>
+          <View style = {styles.statusRow}>
+            <FontAwesome name = "search" size = {16} color = '#ffa200' />
+            <Text style = {styles.subtitle}> Perdido/Achado</Text>
           </View>
-        ))}
-      </View>
+            
+          <View style = {styles.rewardContainer}>
+            <Text style = {styles.rewardContainerText}>Recompensa: R$ 100.00</Text>
+          </View>
+        </View>
 
-      <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.goBack()}>
-        <Text style = {styles.buttonText}>Voltar para Login</Text>
-      </TouchableOpacity>
+        {/* 
+        <View style = {styles.infoRow}>
+          <View style = {styles.containerRow}>
+          <Text style = {styles.boldSubtitle}>Categoria: </Text>
+          <Text>&&&&</Text>
+          </View>
+        </View> 
+        */}
+
+        <View style = {styles.contactRow}>
+          <View style = {styles.avatarRegisterDiv}>
+            <FontAwesome name = "user" size = {30} color = "#aeb2b8" />
+          </View>
+          <View>
+            <Text style = {styles.name}>Nome do usuário</Text>
+            <Text style = {styles.subtitle}>email@email.com</Text>
+          </View>
+          <View>
+            <TouchableOpacity>
+              <FontAwesome name = "phone" size = {30} color = "#aeb2b8" />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View>
+          <View style = {styles.descriptionContainer}>
+            <Text style = {styles.sectionTitle}>Descrição</Text>
+          </View>
+          <View style = {styles.descriptionContainer}>
+            <Text style = {styles.subtitle}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nunc. Sed euismod, nunc ut aliquam aliquam, nunc nisl aliquet nunc, eget aliquam nisl nunc eget nunc.</Text>
+          </View>
+          <View style = {styles.descriptionContainer}>
+            <Text style = {styles.boldSubtitle}>Adicionado: 01/01/2023</Text>
+          </View>
+        </View>
+
+        <View style = {styles.locationContainer}>
+          <View style = {{ marginRight: 8 }}>
+            <FontAwesome name = "map-marker" size = {26} color = '#4c288f' />
+          </View>
+          <View>
+            <Text style = {styles.subtitleLocalization}>40626-541 . Travessa Atlantica, 5091 . Caminho das Arvores</Text>
+          </View>
+        </View>
+        <View style = {styles.locationCard}>
+          <Text style = {styles.locationTitle}>LOCALIZAÇÃO NO MAPA</Text>
+          <View style = {styles.mapContainer}>
+            <FontAwesome name = "map" size = {72} color = '#64748B' />
+            <FontAwesome name = "map-marker" size = {46} color = '#E04B4B' style = {styles.mapMarker} />
+          </View>
+        </View>
+
+        <View style = {styles.reportContainer}>
+          <TouchableOpacity style = {styles.reportButton}>
+            <FontAwesome name = "flag-o" size = {21} color = "#E04B4B" />
+            <Text style = {styles.reportButtonText}>Reportar anúncio</Text>
+          </TouchableOpacity>
+        </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  keyboardAvoidingView: {
-    flex: 1,
-  },
-
   root: {
-    flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     backgroundColor: '#fff',
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     paddingBottom: 24,
   },
 
-  elliot: {
-    alignItems: 'center',
+  imageContainer: {
+    position: 'relative',
     backgroundColor: 'lightgray',
-    padding: 15,
-    borderRadius: 10,
+    height: 450,
+    width: '110%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+
+  imageAction: {
+    position: 'absolute',
+    top: 18,
+    padding: 10,
+  },
+
+  backImageAction: {
+    left: 14,
+    paddingTop: 32,
+  },
+
+  shareImageAction: {
+    right: 14,
+    paddingTop: 32,
   },
 
   container: {
@@ -77,88 +139,155 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 
-  greeting: {
-    fontSize: 20,
+  titleContainer: {
+    alignItems: 'flex-start',
+  },
+  
+  title: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#0b0b0c',
+    textAlign: 'left',
+  },
+  
+  name: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#67676d',
   },
 
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    color: '#4c288f',
+  sectionTitle: {
+    alignSelf: 'flex-start',
+    color: '#222',
+    fontSize: 16,
+    fontWeight: '700',
+    marginTop: 15,
   },
 
   subtitle: {
     fontSize: 16,
     color: '#555',
   },
-
-  input: {
-    height: 45,
-    width: '80%',
-    borderColor: 'gray',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    marginBottom: 8,
+  
+  boldSubtitle: {
+    fontSize: 16,
+    color: '#0b0a0a',
+    fontWeight: '900',
   },
 
-  button: {
-    backgroundColor: '#4c288f',
-    padding: 12,
-    borderRadius: 25,
-    width: '80%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-
-  backButton: {
-    backgroundColor: '#6c757d',
-    marginTop: 20,
-  },
-
-  buttonText: {
-    color: '#ffffff',
-    fontWeight: 'bold',
-  },
-
-  listContainer: {
-    marginTop: 20,
-    width: '80%',
-    alignItems: 'center',
-  },
-
-  listItem: {
-    backgroundColor: '#f9f9f9',
-    padding: 12,
-    borderBottomWidth: 1,
-    borderColor: '#eee',
-    marginBottom: 5,
-    borderRadius: 5,
-    width: '100%',
-    alignItems: 'center',
-  },
-
-  containerRow: {
-    flexDirection: 'row',
-    marginTop: 15,
-  },
-
-  separator: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '90%',
-  },
-
-  separatorLine: {
-    backgroundColor: '#e0e0e0',
-    height: 2,
-    flex: 1,
-  },
-
-  separatorText: {
+  subtitleLocalization: {
+    fontSize: 16,
     color: '#555',
-    marginHorizontal: 12,
+    marginRight: 15,
+  },
+
+  infoRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    width: '96%',
+  },
+
+  contactRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 15,
+    width: '100%',
+    borderTopColor: '#e0e0e070',
+    borderTopWidth: 1,
+    paddingTop: 12,
+  },
+
+  statusRow: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+
+  rewardContainer: {
+    alignItems: 'flex-end',
+
+  },
+
+  rewardContainerText: {
+    color: '#2ec321',
+  },
+  
+  avatarRegisterDiv: {
+    alignItems: 'center',
+    backgroundColor: '#e1e3e6',
+    borderRadius: 26,
+    height: 45,
+    justifyContent: 'center',
+    overflow: 'hidden',
+    width: 45,
+  },
+
+  descriptionContainer: {
+    marginBottom: 15,
+    width: '100%',
+  },
+
+  locationContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    width: '100%',
+  },
+
+  locationCard: {
+    backgroundColor: '#FFFFFF',
+    borderColor: '#E5E7EB',
+    borderRadius: 22,
+    borderWidth: 1,
+    marginTop: 10,
+    padding: 16,
+    width: '100%',
+  },
+
+  locationTitle: {
+    color: '#6B7280',
+    fontSize: 14,
+    fontWeight: '700',
+    letterSpacing: 0.6,
+    marginBottom: 10,
+  },
+
+  mapContainer: {
+    alignItems: 'center',
+    backgroundColor: '#DCE5F0',
+    borderRadius: 14,
+    height: 180,
+    justifyContent: 'center',
+    overflow: 'hidden',
+    width: '100%',
+  },
+
+  mapMarker: {
+    position: 'absolute',
+  },
+
+  reportContainer: {
+    marginTop: 16,
+    width: '100%',
+  },
+
+  reportButton: {
+    alignItems: 'center',
+    backgroundColor: '#FFF8F8',
+    borderColor: '#F8D7DA',
+    borderRadius: 14,
+    borderWidth: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    width: '100%',
+  },
+
+  reportButtonText: {
+    color: '#E04B4B',
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: 10,
   },
 });

@@ -21,109 +21,109 @@ export default function RegisterScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
       <ScrollView style = {styles.root} contentContainerStyle = {styles.content} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
-      <View style = {styles.profileSummary}>
-        <View style = {styles.avatar}>
-          <FontAwesome name = "user" size = {60} color = "#aeb2b8" />
-        </View>
-        <Text style = {styles.guestName}>Adicione uma foto de perfil (opcional)</Text>
-      </View>
-
-      <View style = {[styles.container, styles.containerRegister]}>
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "user" size = {30} color = "#aeb2b8" />
+        <View style = {styles.profileSummary}>
+          <View style = {styles.avatar}>
+            <FontAwesome name = "user" size = {60} color = "#aeb2b8" />
           </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Primeiro nome:</Text>
-            <TextInput style = {styles.input} placeholder = "Digite seu primeiro nome" value = {firstName} onChangeText = {setFirstName} />
-          </View>
+          <Text style = {styles.guestName}>Adicione uma foto de perfil (opcional)</Text>
         </View>
 
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "user" size = {30} color = "#aeb2b8" />
-          </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Último nome:</Text>
-            <TextInput style = {styles.input} placeholder = "Digite seu último nome" value = {lastName} onChangeText = {setLastName} />
-          </View>
-        </View>
-
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "envelope" size = {30} color = "#aeb2b8" />
-          </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>E-mail:</Text>
-            <TextInput style = {styles.input} placeholder = "seu@email.com" value = {email} onChangeText = {setEmail} />
-          </View>
-        </View>
-
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "phone" size = {30} color = "#aeb2b8" />
-          </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Telefone:</Text>
-            <View style = {styles.phoneInputContainer}>
-              <View style = {styles.phoneCountryContainer}>
-                <Text style = {styles.phoneCountry}>🇧🇷</Text>
-                <Text style = {styles.phoneCode}>+55</Text>
-              </View>
-              <TextInput
-                style = {styles.phoneTextInput} placeholder = "(00) 00000-0000" keyboardType = "phone-pad" value = {phone} onChangeText = {(value) => setPhone(formatPhone(value))}
-              />
+        <View style = {[styles.container, styles.containerRegister]}>
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "user" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Primeiro nome:</Text>
+              <TextInput style = {styles.input} placeholder = "Digite seu primeiro nome" value = {firstName} onChangeText = {setFirstName} />
             </View>
           </View>
+
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "user" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Último nome:</Text>
+              <TextInput style = {styles.input} placeholder = "Digite seu último nome" value = {lastName} onChangeText = {setLastName} />
+            </View>
+          </View>
+
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "envelope" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>E-mail:</Text>
+              <TextInput style = {styles.input} placeholder = "seu@email.com" value = {email} onChangeText = {setEmail} />
+            </View>
+          </View>
+
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "phone" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Telefone:</Text>
+              <View style = {styles.phoneInputContainer}>
+                <View style = {styles.phoneCountryContainer}>
+                  <Text style = {styles.phoneCountry}>🇧🇷</Text>
+                  <Text style = {styles.phoneCode}>+55</Text>
+                </View>
+                <TextInput
+                  style = {styles.phoneTextInput} placeholder = "(00) 00000-0000" keyboardType = "phone-pad" value = {phone} onChangeText = {(value) => setPhone(formatPhone(value))}
+                />
+              </View>
+            </View>
+          </View>
+
+          <Text style = {styles.securityTitle}>SEGURANÇA</Text>
+
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "lock" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Senha:</Text>
+              <TextInput style = {styles.input} placeholder = "Crie a sua senha" value = {password} onChangeText = {setPassword} secureTextEntry/>
+            </View>
+          </View>
+
+          <View style = {styles.containerRow}>
+            <View style = {styles.avatarRegisterDiv}>
+              <FontAwesome name = "save" size = {30} color = "#aeb2b8" />
+            </View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Confirmar senha:</Text>
+              <TextInput style = {styles.input} placeholder = "Repita sua senha"value = {passwordConfirmation} onChangeText = {setPasswordConfirmation} secureTextEntry/>
+            </View>
+          </View>
+
+          <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
+            <Text style = {styles.buttonText}>Entrar</Text>
+          </TouchableOpacity>
         </View>
 
-        <Text style = {styles.securityTitle}>SEGURANÇA</Text>
-
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "lock" size = {30} color = "#aeb2b8" />
-          </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Senha:</Text>
-            <TextInput style = {styles.input} placeholder = "Crie a sua senha" value = {password} onChangeText = {setPassword} secureTextEntry/>
+        <View style = {styles.container}>
+          <View style = {styles.separator}>
+            <View style = {styles.separatorLine} />
+            <Text style = {styles.separatorText}>ou entre com</Text>
+            <View style = {styles.separatorLine} />
           </View>
         </View>
 
-        <View style = {styles.containerRow}>
-          <View style = {styles.avatarRegisterDiv}>
-            <FontAwesome name = "save" size = {30} color = "#aeb2b8" />
-          </View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Confirmar senha:</Text>
-            <TextInput style = {styles.input} placeholder = "Repita sua senha"value = {passwordConfirmation} onChangeText = {setPasswordConfirmation} secureTextEntry/>
-          </View>
+        <View style = {styles.socialRow}>
+          <TouchableOpacity style = {styles.buttonExternalLogin}>
+            <FontAwesome name = "facebook" size = {24} color = "#4c288f" />
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.buttonExternalLogin}>
+            <FontAwesome name = "google" size = {24} color = "#4c288f" />
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
-          <Text style = {styles.buttonText}>Entrar</Text>
+        
+        <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
+          <Text style = {styles.buttonText}>Voltar para home</Text>
         </TouchableOpacity>
-      </View>
-
-      <View style = {styles.container}>
-        <View style = {styles.separator}>
-          <View style = {styles.separatorLine} />
-          <Text style = {styles.separatorText}>ou entre com</Text>
-          <View style = {styles.separatorLine} />
-        </View>
-      </View>
-
-      <View style = {styles.socialRow}>
-        <TouchableOpacity style = {styles.buttonExternalLogin}>
-          <FontAwesome name = "facebook" size = {24} color = "#4c288f" />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.buttonExternalLogin}>
-          <FontAwesome name = "google" size = {24} color = "#4c288f" />
-        </TouchableOpacity>
-      </View>
-      
-      <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
-        <Text style = {styles.buttonText}>Voltar para home</Text>
-      </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     paddingBottom: 24,
   },
 

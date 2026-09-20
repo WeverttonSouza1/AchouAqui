@@ -24,142 +24,142 @@ export default function CreatePostScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
       <ScrollView contentContainerStyle = {styles.root} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
-      <View style = {styles.header}>
-        <Text style = {styles.subtitle}>Preencha os detalhes abaixo</Text>
-      </View>
-
-      <View style = {styles.typeSelector}>
-        <TouchableOpacity style = {[styles.typeButton, type === 'achado' && styles.typeButtonActive]} onPress = {() => setType('achado')}>
-          <Text style = {[styles.typeButtonText, type === 'achado' && styles.typeButtonTextActive]}>Eu Achei</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {[styles.typeButton, type === 'perdido' && styles.typeButtonActive]} onPress = {() => setType('perdido')}>
-          <Text style = {[styles.typeButtonText, type === 'perdido' && styles.typeButtonTextActive]}>Eu Perdi</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style = {styles.photoSection}>
-        <Text style = {styles.sectionTitle}>Fotos</Text>
-        <View style = {styles.subPhotoContainer}>
-          <View style = {styles.photoContainer}>
-            <TouchableOpacity style = {styles.photoButton}>
-              <View style = {styles.photoPlaceholder}>
-                <View style = {styles.photoSimbol}>
-                  <FontAwesome name = "camera" size = {40} color = "#aaa" />
-                </View>
-                <Text style = {styles.photoText}>Foto 1</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {styles.photoButton}>
-              <View style = {styles.photoPlaceholder}>
-                <View style = {styles.photoSimbol}>
-                  <FontAwesome name = "camera" size = {40} color = "#aaa" />
-                </View>
-                <Text style = {styles.photoText}>Foto 2</Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style = {styles.photoButton}>
-              <View style = {styles.photoPlaceholder}>
-                <View style = {styles.photoSimbol}>
-                  <FontAwesome name = "camera" size = {40} color = "#aaa" />
-                </View>
-                <Text style = {styles.photoText}>Foto 3</Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-          <Text style = {styles.photoHint}>Clique para adicionar uma foto</Text>
-        </View>
-      </View>
-      
-      <View style = {styles.container}>
-        <Text style = {styles.sectionTitle}>Detalhes</Text>
-
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "edit" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Título</Text>
-            <TextInput style = {styles.detailInput} placeholder = "O que é? (Ex: Chave do carro)" value = {title} onChangeText = {setTitle} />
-          </View>
+        <View style = {styles.header}>
+          <Text style = {styles.subtitle}>Preencha os detalhes abaixo</Text>
         </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "phone" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Contato</Text>
-            <View style = {styles.phoneInputContainer}>
-              <View style = {styles.phoneCountryContainer}>
-                <Text style = {styles.phoneCountry}>🇧🇷</Text>
-                <Text style = {styles.phoneCode}>+55</Text>
-              </View>
-              <TextInput
-                style = {styles.phoneTextInput} placeholder = "(00) 00000-0000" keyboardType = "phone-pad" value = {contact} onChangeText = {(value) => setContact(formatPhone(value))}
-              />
+        <View style = {styles.typeSelector}>
+          <TouchableOpacity style = {[styles.typeButton, type === 'achado' && styles.typeButtonActive]} onPress = {() => setType('achado')}>
+            <Text style = {[styles.typeButtonText, type === 'achado' && styles.typeButtonTextActive]}>Eu Achei</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style = {[styles.typeButton, type === 'perdido' && styles.typeButtonActive]} onPress = {() => setType('perdido')}>
+            <Text style = {[styles.typeButtonText, type === 'perdido' && styles.typeButtonTextActive]}>Eu Perdi</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style = {styles.photoSection}>
+          <Text style = {styles.sectionTitle}>Fotos</Text>
+          <View style = {styles.subPhotoContainer}>
+            <View style = {styles.photoContainer}>
+              <TouchableOpacity style = {styles.photoButton}>
+                <View style = {styles.photoPlaceholder}>
+                  <View style = {styles.photoSimbol}>
+                    <FontAwesome name = "camera" size = {40} color = "#aaa" />
+                  </View>
+                  <Text style = {styles.photoText}>Foto 1</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity style = {styles.photoButton}>
+                <View style = {styles.photoPlaceholder}>
+                  <View style = {styles.photoSimbol}>
+                    <FontAwesome name = "camera" size = {40} color = "#aaa" />
+                  </View>
+                  <Text style = {styles.photoText}>Foto 2</Text>
+                </View>
+              </TouchableOpacity>
+
+              <TouchableOpacity style = {styles.photoButton}>
+                <View style = {styles.photoPlaceholder}>
+                  <View style = {styles.photoSimbol}>
+                    <FontAwesome name = "camera" size = {40} color = "#aaa" />
+                  </View>
+                  <Text style = {styles.photoText}>Foto 3</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <Text style = {styles.photoHint}>Clique para adicionar uma foto</Text>
+          </View>
+        </View>
+        
+        <View style = {styles.container}>
+          <Text style = {styles.sectionTitle}>Detalhes</Text>
+
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "edit" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Título</Text>
+              <TextInput style = {styles.detailInput} placeholder = "O que é? (Ex: Chave do carro)" value = {title} onChangeText = {setTitle} />
             </View>
           </View>
-        </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "envelope" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Título</Text>
-            <TextInput style = {styles.detailInput} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "phone" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Contato</Text>
+              <View style = {styles.phoneInputContainer}>
+                <View style = {styles.phoneCountryContainer}>
+                  <Text style = {styles.phoneCountry}>🇧🇷</Text>
+                  <Text style = {styles.phoneCode}>+55</Text>
+                </View>
+                <TextInput
+                  style = {styles.phoneTextInput} placeholder = "(00) 00000-0000" keyboardType = "phone-pad" value = {contact} onChangeText = {(value) => setContact(formatPhone(value))}
+                />
+              </View>
+            </View>
           </View>
-        </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "money" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Recompensa</Text>
-            <TextInput style = {styles.detailInput} placeholder = "Valor opcional" value = {reward} onChangeText = {setReward} keyboardType = "numeric" />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "envelope" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Título</Text>
+              <TextInput style = {styles.detailInput} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
+            </View>
           </View>
-        </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "tag" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Categoria</Text>
-            <TextInput style = {styles.detailInput} placeholder = "Escolha uma categoria" value = {category} onChangeText = {setCategory} />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "money" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Recompensa</Text>
+              <TextInput style = {styles.detailInput} placeholder = "Valor opcional" value = {reward} onChangeText = {setReward} keyboardType = "numeric" />
+            </View>
           </View>
-          <FontAwesome name = "chevron-right" size = {16} color = "#999" />
-        </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "calendar" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Data</Text>
-            <TextInput style = {styles.detailInput} placeholder = "Selecione uma data" value = {date} onChangeText = {setDate} />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "tag" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Categoria</Text>
+              <TextInput style = {styles.detailInput} placeholder = "Escolha uma categoria" value = {category} onChangeText = {setCategory} />
+            </View>
+            <FontAwesome name = "chevron-right" size = {16} color = "#999" />
           </View>
-          <FontAwesome name = "chevron-right" size = {16} color = "#999" />
-        </View>
 
-        <View style = {styles.detailRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "map-marker" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Localização</Text>
-            <TextInput style = {styles.detailInput} placeholder = "Onde foi? (Ex: Bloco B)" value = {location} onChangeText = {setLocation} />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "calendar" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Data</Text>
+              <TextInput style = {styles.detailInput} placeholder = "Selecione uma data" value = {date} onChangeText = {setDate} />
+            </View>
+            <FontAwesome name = "chevron-right" size = {16} color = "#999" />
           </View>
-          <FontAwesome name = "chevron-right" size = {16} color = "#999" />
-        </View>
 
-        <View style = {styles.descriptionRow}>
-          <View style = {styles.detailIcon}><FontAwesome name = "file-text-o" size = {24} color = "#4c288f" /></View>
-          <View style = {styles.fieldColumn}>
-            <Text style = {styles.label}>Descrição</Text>
-            <TextInput style = {styles.descriptionInput} placeholder = "Detalhes adicionais (cor, marca...)" value = {description} onChangeText = {setDescription} multiline numberOfLines = {4} />
+          <View style = {styles.detailRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "map-marker" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Localização</Text>
+              <TextInput style = {styles.detailInput} placeholder = "Onde foi? (Ex: Bloco B)" value = {location} onChangeText = {setLocation} />
+            </View>
+            <FontAwesome name = "chevron-right" size = {16} color = "#999" />
           </View>
+
+          <View style = {styles.descriptionRow}>
+            <View style = {styles.detailIcon}><FontAwesome name = "file-text-o" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.fieldColumn}>
+              <Text style = {styles.label}>Descrição</Text>
+              <TextInput style = {styles.descriptionInput} placeholder = "Detalhes adicionais (cor, marca...)" value = {description} onChangeText = {setDescription} multiline numberOfLines = {4} />
+            </View>
+          </View>
+
+          <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
+            <FontAwesome name = "save" size = {20} color = "#fff" style = {{ marginRight: 10 }} />
+            <Text style = {styles.buttonText}>Publicar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.goBack()}>
+            <Text style = {styles.buttonText}>Cancelar</Text>
+          </TouchableOpacity>
         </View>
-
-        <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
-          <FontAwesome name = "save" size = {20} color = "#fff" style = {{ marginRight: 10 }} />
-          <Text style = {styles.buttonText}>Publicar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.goBack()}>
-          <Text style = {styles.buttonText}>Cancelar</Text>
-        </TouchableOpacity>
-      </View>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     paddingTop: 20,
     paddingBottom: 24,
   },

@@ -9,55 +9,55 @@ export default function LoginScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
       <View style = {styles.root}>
-      <View style = {styles.logoContainer}>
-        <FontAwesome name = "search" size = {100} color = '#4c288f' />
-      </View>
-      <View style = {styles.container}>
-        <Text style = {styles.mainTitle}>AchouAqui</Text>
-        <Text style = {styles.subtitle}>Tela de Login</Text>
-      </View>
-
-      <View style = {styles.container}>
-        <TextInput style = {styles.input} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
-
-        <TextInput style = {styles.input} placeholder = "Digite a senha" value = {password} onChangeText = {setPassword} />
-
-        <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
-          <Text style = {styles.buttonText}>Entrar</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style = {[styles.buttonRememberPassword]} onPress = {() => navigation.navigate('Home')}>
-          <Text style = {styles.buttonTextRememberPassword}>Perdeu a senha?</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style = {styles.container}>
-        <View style = {styles.separator}>
-          <View style = {styles.separatorLine} />
-          <Text style = {styles.separatorText}>ou entre com</Text>
-          <View style = {styles.separatorLine} />
+        <View style = {styles.logoContainer}>
+          <FontAwesome name = "search" size = {100} color = '#4c288f' />
         </View>
-      </View>
+        <View style = {styles.container}>
+          <Text style = {styles.mainTitle}>AchouAqui</Text>
+          <Text style = {styles.subtitle}>Tela de Login</Text>
+        </View>
 
-      <View style = {styles.containerRow}>
-        <TouchableOpacity style = {styles.buttonExternalLogin}>
-          <FontAwesome name = "facebook" size = {24} color = "#4c288f" />
-        </TouchableOpacity>
-        <TouchableOpacity style = {styles.buttonExternalLogin}>
-          <FontAwesome name = "google" size = {24} color = "#4c288f" />
-        </TouchableOpacity>
-      </View>
+        <View style = {styles.container}>
+          <TextInput style = {styles.input} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
 
-      <View style = {styles.registerRow}>
-      <Text style = {styles.registerText}>Ainda não tem uma conta? </Text>
-      <TouchableOpacity onPress = {() => navigation.navigate('Cadastro')}>
-        <Text style = {styles.registerLink}>Cadastre-se.</Text>
-      </TouchableOpacity>
-      </View>
-      
-      <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
-        <Text style = {styles.buttonText}>Voltar para home</Text>
-      </TouchableOpacity>
+          <TextInput style = {styles.input} placeholder = "Digite a senha" value = {password} onChangeText = {setPassword} />
+
+          <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
+            <Text style = {styles.buttonText}>Entrar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style = {[styles.buttonRememberPassword]} onPress = {() => navigation.navigate('Home')}>
+            <Text style = {styles.buttonTextRememberPassword}>Perdeu a senha?</Text>
+          </TouchableOpacity>
+        </View>
+
+        <View style = {styles.container}>
+          <View style = {styles.separator}>
+            <View style = {styles.separatorLine} />
+            <Text style = {styles.separatorText}>ou entre com</Text>
+            <View style = {styles.separatorLine} />
+          </View>
+        </View>
+
+        <View style = {styles.containerRow}>
+          <TouchableOpacity style = {styles.buttonExternalLogin}>
+            <FontAwesome name = "facebook" size = {24} color = "#4c288f" />
+          </TouchableOpacity>
+          <TouchableOpacity style = {styles.buttonExternalLogin}>
+            <FontAwesome name = "google" size = {24} color = "#4c288f" />
+          </TouchableOpacity>
+        </View>
+
+        <View style = {styles.registerRow}>
+        <Text style = {styles.registerText}>Ainda não tem uma conta? </Text>
+        <TouchableOpacity onPress = {() => navigation.navigate('Cadastro')}>
+          <Text style = {styles.registerLink}>Cadastre-se.</Text>
+        </TouchableOpacity>
+        </View>
+        
+        <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
+          <Text style = {styles.buttonText}>Voltar para home</Text>
+        </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 8,
+    paddingHorizontal: 15,
     paddingBottom: 24,
   },
 

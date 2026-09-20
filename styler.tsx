@@ -9,5 +9,6 @@
 //   color: '#ffa200',
 //   LinearGradient: '145deg, #24192f 0%, #33204a 100%',
 //   border: 1px solid #e3e3e3,
+//   backgroundColor: 'lightgray',
 //  },
 //})
