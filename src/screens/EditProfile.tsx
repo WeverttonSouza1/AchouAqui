@@ -13,7 +13,6 @@ function formatPhone(value: string) {
 export default function RegisterScreen({ navigation }: any) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [phone, setPhone] = useState('');
@@ -33,7 +32,7 @@ export default function RegisterScreen({ navigation }: any) {
         <View style = {styles.container}>
           <View style = {styles.separator}>
             <View style = {styles.separatorLine} />
-            <Text style = {styles.separatorText}>Convidado</Text>
+            <Text style = {styles.separatorText}>{firstName} {lastName}</Text>
             <View style = {styles.separatorLine} />
           </View>
         </View>
@@ -56,16 +55,6 @@ export default function RegisterScreen({ navigation }: any) {
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Último nome</Text>
               <TextInput style = {styles.input} placeholder = "Digite seu último nome" value = {lastName} onChangeText = {setLastName} />
-            </View>
-          </View>
-
-          <View style = {styles.containerRow}>
-            <View style = {styles.avatarRegisterDiv}>
-              <FontAwesome name = "envelope" size = {30} color = '#ffa200' />
-            </View>
-            <View style = {styles.fieldColumn}>
-              <Text style = {styles.label}>E-mail</Text>
-              <TextInput style = {styles.input} placeholder = "seu@email.com" value = {email} onChangeText = {setEmail} />
             </View>
           </View>
 

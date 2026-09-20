@@ -109,7 +109,7 @@ export default function CreatePostScreen({ navigation }: any) {
               <FontAwesome name = "envelope" size = {30} color = "#4c288f" />
             </View>
             <View style = {styles.fieldColumn}>
-              <Text style = {styles.label}>Título</Text>
+              <Text style = {styles.label}>Email para contato</Text>
               <TextInput style = {styles.detailInput} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
             </View>
           </View>
