@@ -1,5 +1,6 @@
   import { FontAwesome } from '@expo/vector-icons';
-  import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+  import { StatusBar } from 'expo-status-bar';
+  import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
   type ProfileRowProps = {
     icon: React.ComponentProps<typeof FontAwesome>['name'];
@@ -21,41 +22,40 @@
 
   export default function ProfileScreen({ navigation }: any) {
     return (
-      <View style = {styles.root}>
-        <View style = {styles.header}>
-          <FontAwesome name = "search" size = {25} color = "#2867ed" />
-          <Text style = {styles.title}>Meu perfil</Text>
-        </View>
-
-        <View style = {styles.profileSummary}>
-          <View style = {styles.avatar}>
-            <FontAwesome name = "user" size = {70} color = "#aeb2b8" />
+      <>
+        <StatusBar hidden />
+        <ScrollView contentContainerStyle = {styles.root} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
+          <View style = {styles.profileSummary}>
+            <View style = {styles.avatar}>
+              <FontAwesome name = "user" size = {70} color = "#aeb2b8" />
+            </View>
+            <Text style = {styles.guestName}>Convidado</Text>
           </View>
-          <Text style = {styles.guestName}>Convidada</Text>
-        </View>
 
-        <View style = {styles.divider} />
+          <View style = {styles.divider} />
 
-        <View style = {styles.options}>
-          <ProfileRow icon = "user" label = "Editar perfil" />
-          <ProfileRow icon = "cog" label = "Configurações" />
-          <ProfileRow icon = "paint-brush" label = "Tema" />
-          <ProfileRow icon = "bell-o" label = "Notificações" />
-          <ProfileRow icon = "commenting-o" label = "Idioma" value = "Português" />
-          <ProfileRow icon = "lock" label = "Política de privacidade" />
-          <ProfileRow icon = "info-circle" label = "Contato" />
-          <ProfileRow icon = "sign-in" label = "Login" onPress = {() => navigation.navigate('Login')} />
-        </View>
-      </View>
+          <View style = {styles.options}>
+            <ProfileRow icon = "user" label = "Editar perfil" onPress = {() => navigation.navigate('EditProfile')} />
+            <ProfileRow icon = "paint-brush" label = "Tema" />
+            <ProfileRow icon = "bell-o" label = "Notificações" />
+            <ProfileRow icon = "commenting-o" label = "Idioma" value = "Português" />
+            <ProfileRow icon = "lock" label = "Política de privacidade" />
+            <ProfileRow icon = "info-circle" label = "Contato" />
+            <ProfileRow icon = "sign-in" label = "Login" onPress = {() => navigation.navigate('Login')} />
+            <ProfileRow icon = "trash" label = "Excluir conta" />
+            <ProfileRow icon = "sign-out" label = "Sair" />
+          </View>
+        </ScrollView>
+      </>
     );
   }
 
   const styles = StyleSheet.create({
     root: {
       backgroundColor: '#ffffff',
-      flex: 1,
       paddingHorizontal: 8,
       paddingTop: 26,
+      paddingBottom: 24,
     },
 
     header: {
@@ -72,7 +72,6 @@
 
     profileSummary: {
       alignItems: 'center',
-      marginTop: 28,
     },
 
     avatar: {
@@ -86,9 +85,9 @@
     },
 
     guestName: {
-      color: '#171717',
+      color: '#141313',
       fontSize: 26,
-      fontWeight: '600',
+      fontWeight: '800',
       marginTop: 14,
     },
 

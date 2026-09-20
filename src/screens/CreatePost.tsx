@@ -77,7 +77,9 @@ export default function CreatePostScreen({ navigation }: any) {
           <Text style = {styles.sectionTitle}>Detalhes</Text>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "edit" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "edit" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Título</Text>
               <TextInput style = {styles.detailInput} placeholder = "O que é? (Ex: Chave do carro)" value = {title} onChangeText = {setTitle} />
@@ -85,7 +87,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "phone" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "phone" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Contato</Text>
               <View style = {styles.phoneInputContainer}>
@@ -101,7 +105,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "envelope" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "envelope" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Título</Text>
               <TextInput style = {styles.detailInput} placeholder = "Digite o Email" value = {email} onChangeText = {setEmail} />
@@ -109,7 +115,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "money" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "money" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Recompensa</Text>
               <TextInput style = {styles.detailInput} placeholder = "Valor opcional" value = {reward} onChangeText = {setReward} keyboardType = "numeric" />
@@ -117,7 +125,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "tag" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "tag" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Categoria</Text>
               <TextInput style = {styles.detailInput} placeholder = "Escolha uma categoria" value = {category} onChangeText = {setCategory} />
@@ -126,7 +136,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "calendar" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "calendar" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Data</Text>
               <TextInput style = {styles.detailInput} placeholder = "Selecione uma data" value = {date} onChangeText = {setDate} />
@@ -135,7 +147,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.detailRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "map-marker" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "map-marker" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Localização</Text>
               <TextInput style = {styles.detailInput} placeholder = "Onde foi? (Ex: Bloco B)" value = {location} onChangeText = {setLocation} />
@@ -144,7 +158,9 @@ export default function CreatePostScreen({ navigation }: any) {
           </View>
 
           <View style = {styles.descriptionRow}>
-            <View style = {styles.detailIcon}><FontAwesome name = "file-text-o" size = {24} color = "#4c288f" /></View>
+            <View style = {styles.detailIcon}>
+              <FontAwesome name = "file-text-o" size = {30} color = "#4c288f" />
+            </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Descrição</Text>
               <TextInput style = {styles.descriptionInput} placeholder = "Detalhes adicionais (cor, marca...)" value = {description} onChangeText = {setDescription} multiline numberOfLines = {4} />

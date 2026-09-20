@@ -7,6 +7,7 @@ import HomeScreen from './src/screens/Home';
 import CreatePostScreen from './src/screens/CreatePost';
 import ItemDetailsScreen from './src/screens/ItemDetails';
 import ProfileScreen from './src/screens/Profile';
+import EditProfileScreen from './src/screens/EditProfile';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,7 @@ export default function App() {
         <Stack.Screen name = "CreatePost" component = {CreatePostScreen} options = {{ title: 'Registrar Objeto' }} />
         <Stack.Screen name = "ItemDetails" component = {ItemDetailsScreen} options = {{ headerShown: false }} />
         <Stack.Screen name = "Profile" component = {ProfileScreen} options = {{ title: 'Meu Perfil' }} />
+        <Stack.Screen name = "EditProfile" component = {EditProfileScreen} options = {{ title: 'Editar Perfil' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

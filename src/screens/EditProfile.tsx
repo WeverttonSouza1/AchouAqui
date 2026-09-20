@@ -21,14 +21,21 @@ export default function RegisterScreen({ navigation }: any) {
   return (
     <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
       <ScrollView style = {styles.root} contentContainerStyle = {styles.content} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
-        <View style = {styles.profileSummary}>
+        <View style = {styles.avatarSection}>
           <View style = {styles.avatar}>
-            <FontAwesome name = "user" size = {60} color = "#aeb2b8" />
+            <FontAwesome name = "user" size = {76} color = "#AEB2B8" />
           </View>
           <TouchableOpacity style = {styles.editAvatarButton}>
-            <FontAwesome name = "pencil" size = {18} color = "#FFFFFF" />
+            <FontAwesome name = "pencil" size = {23} color = "#FFFFFF" />
           </TouchableOpacity>
-          <Text style = {styles.guestName}>Adicione uma foto de perfil (opcional)</Text>
+        </View>
+
+        <View style = {styles.container}>
+          <View style = {styles.separator}>
+            <View style = {styles.separatorLine} />
+            <Text style = {styles.separatorText}>Convidado</Text>
+            <View style = {styles.separatorLine} />
+          </View>
         </View>
 
         <View style = {[styles.container, styles.containerRegister]}>
@@ -88,7 +95,7 @@ export default function RegisterScreen({ navigation }: any) {
             </View>
             <View style = {styles.fieldColumn}>
               <Text style = {styles.label}>Senha</Text>
-              <TextInput style = {styles.input} placeholder = "Crie a sua senha" value = {password} onChangeText = {setPassword} secureTextEntry/>
+              <TextInput style = {styles.input} placeholder = "Digite sua nova senha" value = {password} onChangeText = {setPassword} secureTextEntry/>
             </View>
           </View>
 
@@ -103,30 +110,10 @@ export default function RegisterScreen({ navigation }: any) {
           </View>
 
           <TouchableOpacity style = {styles.button} onPress = {() => navigation.navigate('Home')}>
-            <Text style = {styles.buttonText}>Entrar</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style = {styles.container}>
-          <View style = {styles.separator}>
-            <View style = {styles.separatorLine} />
-            <Text style = {styles.separatorText}>ou entre com</Text>
-            <View style = {styles.separatorLine} />
-          </View>
-        </View>
-
-        <View style = {styles.socialRow}>
-          <TouchableOpacity style = {styles.buttonExternalLogin}>
-            <FontAwesome name = "facebook" size = {24} color = "#4c288f" />
-          </TouchableOpacity>
-          <TouchableOpacity style = {styles.buttonExternalLogin}>
-            <FontAwesome name = "google" size = {24} color = "#4c288f" />
+            <Text style = {styles.buttonText}>Salvar</Text>
           </TouchableOpacity>
         </View>
         
-        <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
-          <Text style = {styles.buttonText}>Voltar para home</Text>
-        </TouchableOpacity>
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -357,37 +344,43 @@ const styles = StyleSheet.create({
     marginBottom: 48,
   },
 
+  avatarSection: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginTop: 20 ,
+    marginBottom: 28,
+  },
+
+  avatar: {
+    alignItems: 'center',
+    backgroundColor: '#E1E3E6',
+    borderRadius: 92,
+    height: 184,
+    justifyContent: 'center',
+    width: 184,
+  },
+
   editAvatarButton: {
     alignItems: 'center',
     backgroundColor: '#4C288F',
     borderColor: '#FFFFFF',
     borderRadius: 30,
     borderWidth: 3,
-    bottom: 30,
-    height: 45,
+    bottom: -4,
+    height: 60,
     justifyContent: 'center',
     position: 'absolute',
-    right: 70,
-    width: 45,
-  },
-
-  avatar: {
-    alignItems: 'center',
-    backgroundColor: '#e1e3e6',
-    borderRadius: 86,
-    height: 142,
-    justifyContent: 'center',
-    overflow: 'hidden',
-    width: 142,
+    right: -8,
+    width: 60,
   },
 
   guestName: {
-    color: '#1e1e1e',
-    fontSize: 18,
+    color: '#ffa200',
+    fontSize: 16,
     fontWeight: '600',
     marginTop: 15,
   },
-
 
   separator: {
     alignItems: 'center',
@@ -402,7 +395,10 @@ const styles = StyleSheet.create({
   },
 
   separatorText: {
-    color: '#555',
+    color: '#141313',
+    fontSize: 26,
+    fontWeight: '800',
     marginHorizontal: 12,
+    marginBottom: 32,
   },
 });
