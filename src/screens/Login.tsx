@@ -1,16 +1,19 @@
 import { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
 export default function LoginScreen({ navigation }: any) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <View style = {styles.root}>
+    <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
+      <View style = {styles.root}>
+      <View style = {styles.logoContainer}>
+        <FontAwesome name = "search" size = {100} color = '#4c288f' />
+      </View>
       <View style = {styles.container}>
-        <Text style = {styles.title}>AchouAqui</Text>
-        {/* imagem */}
+        <Text style = {styles.mainTitle}>AchouAqui</Text>
         <Text style = {styles.subtitle}>Tela de Login</Text>
       </View>
 
@@ -55,18 +58,27 @@ export default function LoginScreen({ navigation }: any) {
       <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
         <Text style = {styles.buttonText}>Voltar para home</Text>
       </TouchableOpacity>
-    </View>
+      </View>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+
   root: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     paddingBottom: 24,
+  },
+
+  logoContainer: {
+    alignItems: 'center',
   },
 
   container: {
@@ -78,6 +90,12 @@ const styles = StyleSheet.create({
   containerRow: {
     flexDirection: 'row',
     marginTop: 15,
+  },
+
+  mainTitle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#ffa200',
   },
 
   title: {

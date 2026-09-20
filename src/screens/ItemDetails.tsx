@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function ItemDetailsScreen({ navigation }: any) {
   const [item, setItem] = useState('');
@@ -13,7 +13,8 @@ export default function ItemDetailsScreen({ navigation }: any) {
   };
 
   return (
-    <View style = {styles.root}>
+    <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
+      <ScrollView contentContainerStyle = {styles.root} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
       <View style = {styles.elliot}>
         <Text style = {styles.greeting}>Hello, Friend!</Text>
       </View>
@@ -44,17 +45,22 @@ export default function ItemDetailsScreen({ navigation }: any) {
       <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.goBack()}>
         <Text style = {styles.buttonText}>Voltar para Login</Text>
       </TouchableOpacity>
-    </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+
   root: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     paddingBottom: 24,
   },
 

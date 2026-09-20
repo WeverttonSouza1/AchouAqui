@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 export default function HomeScreen({ navigation }: any) {
   const [item, setItem] = useState('');
@@ -13,7 +13,8 @@ export default function HomeScreen({ navigation }: any) {
   };
 
   return (
-    <ScrollView style = {styles.root} contentContainerStyle = {styles.content}>
+    <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
+      <ScrollView style = {styles.root} contentContainerStyle = {styles.content} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
       <View style = {styles.elliot}>
         <Text style = {styles.greeting}>Hello, Friend!</Text>
       </View>
@@ -53,11 +54,16 @@ export default function HomeScreen({ navigation }: any) {
       <TouchableOpacity style = {[styles.button]} onPress = {() => navigation.navigate('CreatePost')}>
         <Text style = {styles.buttonText}>Criar Post</Text>
       </TouchableOpacity>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+
   root: {
     flex: 1,
     backgroundColor: '#fff',
@@ -66,7 +72,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     paddingBottom: 24,
   },
 

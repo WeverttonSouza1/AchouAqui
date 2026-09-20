@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { KeyboardAvoidingView, Platform, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 
 function formatPhone(value: string) {
   const digits = value.replace(/\D/g, '').slice(0, 11);
@@ -19,7 +19,8 @@ export default function RegisterScreen({ navigation }: any) {
   const [phone, setPhone] = useState('');
 
   return (
-    <ScrollView style = {styles.root} contentContainerStyle = {styles.content}>
+    <KeyboardAvoidingView style = {styles.keyboardAvoidingView} behavior = {Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset = {80}>
+      <ScrollView style = {styles.root} contentContainerStyle = {styles.content} keyboardShouldPersistTaps = "handled" keyboardDismissMode = "on-drag">
       <View style = {styles.profileSummary}>
         <View style = {styles.avatar}>
           <FontAwesome name = "user" size = {60} color = "#aeb2b8" />
@@ -84,7 +85,7 @@ export default function RegisterScreen({ navigation }: any) {
           </View>
           <View style = {styles.fieldColumn}>
             <Text style = {styles.label}>Senha:</Text>
-            <TextInput style = {styles.input} placeholder = "Crie a sua senha" value = {password} onChangeText = {setPassword} />
+            <TextInput style = {styles.input} placeholder = "Crie a sua senha" value = {password} onChangeText = {setPassword} secureTextEntry/>
           </View>
         </View>
 
@@ -123,11 +124,16 @@ export default function RegisterScreen({ navigation }: any) {
       <TouchableOpacity style = {[styles.button, styles.backButton]} onPress = {() => navigation.navigate('Home')}>
         <Text style = {styles.buttonText}>Voltar para home</Text>
       </TouchableOpacity>
-    </ScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
+  keyboardAvoidingView: {
+    flex: 1,
+  },
+
   root: {
     flex: 1,
     backgroundColor: '#fff',
@@ -136,7 +142,7 @@ const styles = StyleSheet.create({
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 8,
     paddingBottom: 24,
   },
 

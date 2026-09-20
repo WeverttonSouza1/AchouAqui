@@ -51,7 +51,7 @@
     root: {
       backgroundColor: '#ffffff',
       flex: 1,
-      paddingHorizontal: 22,
+      paddingHorizontal: 8,
       paddingTop: 26,
     },
 

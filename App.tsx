@@ -17,7 +17,7 @@ export default function App() {
         <Stack.Screen name = "Login" component = {LoginScreen} options = {{ title: 'Login' }} />
         <Stack.Screen name = "Cadastro" component = {RegisterScreen} options = {{ headerShown: false }} />
         <Stack.Screen name = "Home" component = {HomeScreen} options = {{ title: 'Achados e Perdidos' }} />
-        <Stack.Screen name = "CreatePost" component = {CreatePostScreen} options = {{ title: 'Postar' }} />
+        <Stack.Screen name = "CreatePost" component = {CreatePostScreen} options = {{ title: 'Registrar Objeto' }} />
         <Stack.Screen name = "ItemDetails" component = {ItemDetailsScreen} options = {{ title: 'Detalhes do Item' }} />
         <Stack.Screen name = "Profile" component = {ProfileScreen} options = {{ title: 'Meu Perfil' }} />
       </Stack.Navigator>
